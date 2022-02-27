@@ -1,7 +1,8 @@
 {
-  "name": "react",
+  "name": "pr-preview",
   "version": "1.0.0",
-  "description": "React example starter project",
+  "private": true,
+  "description": "arco-design example starter project",
   "keywords": [
     "react",
     "starter"

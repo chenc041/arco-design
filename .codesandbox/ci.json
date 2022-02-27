@@ -2,6 +2,6 @@
   "installCommand": "init",
   "buildCommand": "build",
   "packages": ["components/*"],
-  "sandboxes": ["/.codesandbox/template/pr-preview", "new"],
+  "sandboxes": ["/.codesandbox/template/pr-preview"],
   "node": "16"
 }
