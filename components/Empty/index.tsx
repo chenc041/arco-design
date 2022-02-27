@@ -16,7 +16,7 @@ function Empty(baseProps: EmptyProps, ref) {
   const alt = typeof description === 'string' ? description : 'empty';
 
   return (
-    <div ref={ref} className={classNames} style={style}>
+    <div ref={ref} className={classNames} style={style} data-id="empty">
       <div className={`${prefixCls}-wrapper`}>
         <div className={`${prefixCls}-image`}>
           {imgSrc ? <img alt={alt} src={imgSrc} /> : icon || <IconEmpty />}
