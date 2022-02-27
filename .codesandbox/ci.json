@@ -1,5 +1,5 @@
 {
-  "installCommand": "install",
+  "installCommand": "init",
   "buildCommand": "build",
   "packages": ["components/*"],
   "sandboxes": ["new"],
