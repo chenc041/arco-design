@@ -2,6 +2,6 @@
   "installCommand": "init",
   "buildCommand": "build",
   "packages": ["components/*"],
-  "sandboxes": ["/.codesandbox/template/pr-preview"],
+  "sandboxes": ["/.codesandbox/template/pr-preview", "nifty-zeh-1g70j4"],
   "node": "16"
 }
