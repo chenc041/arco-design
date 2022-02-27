@@ -3,7 +3,7 @@
   "buildCommand": "build",
   "packages": ["components/*"],
   "publishDirectory": {
-    "@arco-design/web-react": "build/node_modules/@arco-design/web-react"
+    "@arco-design/web-react": "/*"
   },
   "sandboxes": ["/.codesandbox/template/pr-preview", "nifty-zeh-1g70j4"],
   "node": "16"
