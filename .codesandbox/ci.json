@@ -2,9 +2,6 @@
   "installCommand": "init",
   "buildCommand": "build",
   "packages": ["components/*"],
-  "publishDirectory": {
-    "@arco-design/web-react": "/*"
-  },
-  "sandboxes": ["/.codesandbox/template/pr-preview", "nifty-zeh-1g70j4"],
+  "sandboxes": ["/.codesandbox/template/pr-preview"],
   "node": "16"
 }
