@@ -1,7 +1,7 @@
 {
   "installCommand": "init",
   "buildCommand": "build",
-  "packages": ["components/"],
+  "packages": ["components/*"],
   "publishDirectory": {
     "@arco-design/web-react": "/"
   },
