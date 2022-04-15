@@ -53,6 +53,16 @@ const TextArea = (props: TextAreaProps, ref) => {
     textAreaStyle.resize = 'none';
   }
 
+  // set element focus and  caret position
+  const setFocus = () => {
+    if (textareaRef.current && textareaRef.current.focus) {
+      const caretPos = textareaRef.current.textContent.length;
+      // reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
+      textareaRef.current.setSelectionRange(caretPos, caretPos);
+      textareaRef.current.focus();
+    }
+  };
+
   const handleChangeValue = (value, e) => {
     const { onChange } = props;
     if (!('value' in props)) {
@@ -95,9 +105,7 @@ const TextArea = (props: TextAreaProps, ref) => {
 
   const handleClearClick = (e) => {
     e.stopPropagation();
-    if (textareaRef.current && textareaRef.current.focus) {
-      textareaRef.current.focus();
-    }
+    setFocus();
     handleChangeValue('', e);
     onClear && onClear();
   };
@@ -111,7 +119,7 @@ const TextArea = (props: TextAreaProps, ref) => {
     () => ({
       dom: textareaRef.current,
       focus: () => {
-        textareaRef.current && textareaRef.current.focus && textareaRef.current.focus();
+        setFocus();
       },
       blur: () => {
         textareaRef.current && textareaRef.current.blur && textareaRef.current.blur();
