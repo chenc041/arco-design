@@ -170,7 +170,9 @@ exports[`renders Space/demo/basic.md correctly 1`] = `
     class="arco-space-item"
   >
     <button
+      aria-checked="true"
       class="arco-switch arco-switch-type-circle arco-switch-checked"
+      role="switch"
       type="button"
     >
       <div
@@ -308,6 +310,7 @@ exports[`renders Space/demo/split.md correctly 1`] = `
   >
     <div
       class="arco-divider arco-divider-vertical"
+      role="separator"
     />
   </div>
   <div
@@ -325,6 +328,7 @@ exports[`renders Space/demo/split.md correctly 1`] = `
   >
     <div
       class="arco-divider arco-divider-vertical"
+      role="separator"
     />
   </div>
   <div

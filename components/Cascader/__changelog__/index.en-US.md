@@ -1,3 +1,19 @@
+## 2.32.0
+
+2022-04-15
+
+### 🐛 BugFix
+
+- Fixed a bug where the selected option echoed the wrong value in the search panel when `checkedstrategy=parenet` in the `Cascader` component.([#763](https://github.com/arco-design/arco-design/pull/763))
+
+## 2.31.2
+
+2022-04-01
+
+### 🐛 BugFix
+
+- Fixed a bug where the options panel was not updated when the mouse moved from a path node to a leaf node in `expandTrigger=hover` of the `Cascader` component.([#727](https://github.com/arco-design/arco-design/pull/727))
+
 ## 2.31.0
 
 2022-03-25

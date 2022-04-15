@@ -88,14 +88,15 @@ function List<T extends unknown = any>(baseProps: ListProps<T>, ref) {
   useImperativeHandle(listRef, () => {
     return {
       dom: refDom.current,
-      scrollIntoView: (index) => {
+      scrollIntoView: (index, options?: ScrollIntoViewOptions) => {
         if (refVirtualList.current) {
-          refVirtualList.current.scrollTo({ index });
+          refVirtualList.current.scrollTo({ index, options });
         } else if (refItemListWrapper.current) {
           const node = refItemListWrapper.current.children[index];
           node &&
             scrollIntoView(node as HTMLElement, {
               boundary: refScrollElement.current,
+              ...options,
             });
         }
       },
@@ -289,6 +290,7 @@ function List<T extends unknown = any>(baseProps: ListProps<T>, ref) {
           {isVirtual ? (
             <>
               <VirtualList
+                role="list"
                 ref={(ref) => {
                   if (ref) {
                     refVirtualList.current = ref;
@@ -296,17 +298,16 @@ function List<T extends unknown = any>(baseProps: ListProps<T>, ref) {
                   }
                 }}
                 className={`${prefixCls}-content ${prefixCls}-virtual`}
-                data={listItems}
+                data={scrollLoadingEle ? listItems.concat(scrollLoadingEle) : listItems}
                 isStaticItemHeight={false}
                 onScroll={needHandleScroll ? throttledScrollHandler : undefined}
                 {...virtualListProps}
               >
                 {(child) => child}
               </VirtualList>
-              {scrollLoadingEle}
             </>
           ) : (
-            <div className={`${prefixCls}-content`} ref={refItemListWrapper}>
+            <div role="list" className={`${prefixCls}-content`} ref={refItemListWrapper}>
               {listItems}
               {scrollLoadingEle}
             </div>

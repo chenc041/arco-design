@@ -176,6 +176,7 @@ Array [
       class="arco-pagination-list"
     >
       <li
+        aria-label="上一页"
         class="arco-pagination-item arco-pagination-item-prev arco-pagination-item-disabled"
       >
         <svg
@@ -193,36 +194,38 @@ Array [
         </svg>
       </li>
       <li
+        aria-current="true"
+        aria-label="第 1 页"
         class="arco-pagination-item arco-pagination-item-active"
-        data-active="true"
       >
         1
       </li>
       <li
+        aria-label="第 2 页"
         class="arco-pagination-item"
-        data-active="false"
       >
         2
       </li>
       <li
+        aria-label="第 3 页"
         class="arco-pagination-item"
-        data-active="false"
       >
         3
       </li>
       <li
+        aria-label="第 4 页"
         class="arco-pagination-item"
-        data-active="false"
       >
         4
       </li>
       <li
+        aria-label="第 5 页"
         class="arco-pagination-item"
-        data-active="false"
       >
         5
       </li>
       <li
+        aria-label="向后 5 页"
         class="arco-pagination-item arco-pagination-item-jumper"
       >
         <svg
@@ -245,12 +248,13 @@ Array [
         </svg>
       </li>
       <li
+        aria-label="第 20 页"
         class="arco-pagination-item"
-        data-active="false"
       >
         20
       </li>
       <li
+        aria-label="下一页"
         class="arco-pagination-item arco-pagination-item-next"
       >
         <svg
@@ -269,6 +273,7 @@ Array [
       </li>
     </ul>
     <div
+      aria-label="页码"
       class="arco-pagination-option"
     >
       <div
@@ -618,7 +623,7 @@ exports[`renders ConfigProvider/demo/component-config.md correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="arco-icon arco-icon-calendar"
+                class="arco-icon arco-icon-calendar-clock"
                 fill="none"
                 focusable="false"
                 stroke="currentColor"
@@ -626,7 +631,14 @@ exports[`renders ConfigProvider/demo/component-config.md correctly 1`] = `
                 viewBox="0 0 48 48"
               >
                 <path
-                  d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"
+                  d="M7 22h34V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1h18M34 5v8M14 5v8"
+                />
+                <path
+                  clip-rule="evenodd"
+                  d="M36 44a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm1.5-9.75V29h-3v8.25H42v-3h-4.5Z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  stroke="none"
                 />
               </svg>
             </span>
@@ -727,7 +739,11 @@ exports[`renders ConfigProvider/demo/component-config.md correctly 1`] = `
               class="arco-input-inner-wrapper arco-input-inner-wrapper-default"
             >
               <input
+                aria-valuemax="Infinity"
+                aria-valuemin="-Infinity"
+                aria-valuenow="2"
                 class="arco-input arco-input-size-default"
+                role="spinbutton"
                 value="2"
               />
               <span
@@ -792,7 +808,11 @@ exports[`renders ConfigProvider/demo/component-config.md correctly 1`] = `
               class="arco-input-inner-wrapper arco-input-inner-wrapper-default"
             >
               <input
+                aria-valuemax="Infinity"
+                aria-valuemin="-Infinity"
+                aria-valuenow="3"
                 class="arco-input arco-input-size-default"
+                role="spinbutton"
                 value="3"
               />
               <span
@@ -1149,6 +1169,7 @@ Array [
       </div>
       <div
         class="arco-list-content"
+        role="list"
       >
         <div
           class="arco-empty"
@@ -1314,7 +1335,9 @@ Array [
       class="arco-space-item"
     >
       <button
+        aria-checked="true"
         class="arco-switch arco-switch-type-circle arco-switch-checked"
+        role="switch"
         type="button"
       >
         <div

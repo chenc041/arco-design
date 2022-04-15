@@ -1,6 +1,6 @@
 {
   "name": "@arco-design/web-react",
-  "version": "2.31.1",
+  "version": "2.32.0",
   "description": "Arco Design React UI Library.",
   "module": "./es/index.js",
   "main": "./lib/index.js",
@@ -118,7 +118,7 @@
     "@arco-design/color": "^0.4.0",
     "@babel/runtime": "^7.5.5",
     "b-tween": "^0.3.3",
-    "b-validate": "^1.3.4",
+    "b-validate": "^1.4.0",
     "compute-scroll-into-view": "^1.0.17",
     "dayjs": "^1.10.5",
     "lodash": "^4.17.21",

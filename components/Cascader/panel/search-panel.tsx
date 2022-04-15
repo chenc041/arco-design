@@ -11,6 +11,7 @@ import { ArrowDown, Esc, Enter, ArrowUp } from '../../_util/keycode';
 import useUpdateEffect from '../../_util/hooks/useUpdate';
 import useIsFirstRender from '../../_util/hooks/useIsFirstRender';
 import { isString } from '../../_util/is';
+import { getMultipleCheckValue } from '../util';
 
 export const getLegalIndex = (currentIndex, maxIndex) => {
   if (currentIndex < 0) {
@@ -71,16 +72,7 @@ const SearchPanel = <T extends OptionProps>(props: SearchPanelProps<T>) => {
       return;
     }
     if (multiple) {
-      option.setCheckedState(checked);
-      let checkedValues;
-      if (checked) {
-        checkedValues = value.concat([option.pathValue]);
-      } else {
-        checkedValues = value.filter((item) => {
-          return !isEqualWith(item, option.pathValue);
-        });
-      }
-
+      const checkedValues = getMultipleCheckValue(props.value, store, option, checked);
       onChange && onChange(checkedValues);
     } else {
       onChange && onChange([option.pathValue]);
@@ -168,6 +160,7 @@ const SearchPanel = <T extends OptionProps>(props: SearchPanelProps<T>) => {
   return options.length ? (
     <div className={`${prefixCls}-list-wrapper`}>
       <ul
+        role="menu"
         onMouseMove={() => {
           isKeyboardHover.current = false;
         }}
@@ -184,12 +177,12 @@ const SearchPanel = <T extends OptionProps>(props: SearchPanelProps<T>) => {
             prefixCls
           );
 
-          const isChecked = value.some((x) => {
-            return isEqualWith(x, item.pathValue);
-          });
+          const isChecked = item._checked;
 
           return (
             <li
+              role="menuitem"
+              aria-disabled={item.disabled}
               ref={(node) => {
                 if (i === currentHoverIndex) {
                   refActiveItem.current = node;

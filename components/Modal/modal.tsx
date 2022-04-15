@@ -14,7 +14,7 @@ import { CSSTransition } from 'react-transition-group';
 import FocusLock from 'react-focus-lock';
 import IconClose from '../../icon/react-icon/IconClose';
 import cs from '../_util/classNames';
-import { on, off, isServerRendering } from '../_util/dom';
+import { isServerRendering } from '../_util/dom';
 import { Esc } from '../_util/keycode';
 import Button from '../Button';
 import Portal from '../Portal';
@@ -32,6 +32,7 @@ import useMergeProps from '../_util/hooks/useMergeProps';
 
 type CursorPositionType = { left: number; top: number } | null;
 let cursorPosition: CursorPositionType | null = null;
+let globalDialogIndex = 0;
 
 if (!isServerRendering) {
   document.documentElement.addEventListener(
@@ -102,12 +103,17 @@ function Modal(baseProps: PropsWithChildren<ModalProps>, ref) {
 
   const modalWrapperRef = useRef<HTMLDivElement>(null);
   const contentWrapper = useRef<HTMLDivElement>(null);
-  const keyboardEventOn = useRef<boolean>(false);
   const [wrapperVisible, setWrapperVisible] = useState(visible);
   const [popupZIndex, setPopupZIndex] = useState<number>();
   const cursorPositionRef = useRef<CursorPositionType>(null);
   const haveOriginTransformOrigin = useRef<boolean>(false);
   const maskClickRef = useRef(false);
+
+  const dialogIndex = useRef<number>();
+
+  if (!dialogIndex.current) {
+    dialogIndex.current = globalDialogIndex++;
+  }
 
   const [loading, setLoading] = useMergeValue(false, {
     defaultValue: false,
@@ -129,6 +135,13 @@ function Modal(baseProps: PropsWithChildren<ModalProps>, ref) {
 
   const onCancel = () => {
     props.onCancel && props.onCancel();
+  };
+
+  const onEscExit = (event: React.KeyboardEvent) => {
+    if (escToExit && visible && event.key === Esc.key) {
+      event.stopPropagation();
+      onCancel();
+    }
   };
 
   const inExit = useRef(false);
@@ -165,20 +178,14 @@ function Modal(baseProps: PropsWithChildren<ModalProps>, ref) {
   };
 
   useEffect(() => {
-    const onKeyDown = (e) => {
-      if (escToExit && e && e.key === Esc.key) {
-        onCancel();
-      }
-    };
-
-    if (visible && !keyboardEventOn.current) {
-      keyboardEventOn.current = true;
-      on(document, 'keydown', onKeyDown);
+    let timer = null;
+    if (escToExit) {
+      timer = setTimeout(() => {
+        modalWrapperRef.current?.focus();
+      });
     }
-
     return () => {
-      keyboardEventOn.current = false;
-      off(document, 'keydown', onKeyDown);
+      timer && clearTimeout(timer);
     };
   }, [visible, escToExit]);
 
@@ -240,7 +247,9 @@ function Modal(baseProps: PropsWithChildren<ModalProps>, ref) {
     >
       {title && (
         <div className={`${prefixCls}-header`}>
-          <div className={`${prefixCls}-title`}>{title}</div>
+          <div className={`${prefixCls}-title`} id={`arco-dialog-${dialogIndex.current}`}>
+            {title}
+          </div>
         </div>
       )}
       <div ref={contentWrapper} className={`${prefixCls}-content`}>
@@ -254,15 +263,25 @@ function Modal(baseProps: PropsWithChildren<ModalProps>, ref) {
             {closeIcon}
           </span>
         ) : (
-          <IconHover tabIndex={-1} onClick={onCancel} className={`${prefixCls}-close-icon`}>
+          <IconHover
+            tabIndex={-1}
+            onClick={onCancel}
+            className={`${prefixCls}-close-icon`}
+            role="button"
+            aria-label="Close"
+          >
             <IconClose />
           </IconHover>
         ))}
     </ConfigProvider>
   );
 
+  const ariaProps = title ? { 'aria-labelledby': `arco-dialog-${dialogIndex.current}` } : {};
+
   const modalDom = (
     <div
+      role="dialog"
+      {...ariaProps}
       className={cs(
         prefixCls,
         {
@@ -273,7 +292,14 @@ function Modal(baseProps: PropsWithChildren<ModalProps>, ref) {
       style={style}
     >
       {innerFocusLock ? (
-        <FocusLock disabled={!visible} autoFocus={innerAutoFocus}>
+        <FocusLock
+          disabled={!visible}
+          autoFocus={innerAutoFocus}
+          lockProps={{
+            tabIndex: -1,
+            onKeyDown: onEscExit,
+          }}
+        >
           {element}
         </FocusLock>
       ) : (
@@ -312,12 +338,10 @@ function Modal(baseProps: PropsWithChildren<ModalProps>, ref) {
               e.style.display = 'none';
             }}
           >
-            <div className={`${prefixCls}-mask`} style={maskStyle} />
+            <div aria-hidden className={`${prefixCls}-mask`} style={maskStyle} />
           </CSSTransition>
         ) : null}
         <div
-          role="dialog"
-          aria-hidden="true"
           {...omit(rest, [
             'content',
             'icon',
@@ -330,6 +354,7 @@ function Modal(baseProps: PropsWithChildren<ModalProps>, ref) {
             'closable',
             'prefixCls',
           ])}
+          tabIndex={!innerFocusLock || !innerAutoFocus ? -1 : null}
           ref={modalWrapperRef}
           className={cs(
             `${prefixCls}-wrapper`,
@@ -345,6 +370,8 @@ function Modal(baseProps: PropsWithChildren<ModalProps>, ref) {
             display: visible || wrapperVisible ? 'block' : 'none',
             overflow: !visible && wrapperVisible ? 'hidden' : '',
           }}
+          // 如果 autoFocus 是 false 需要在 modal 外层绑定 onKeyDown, 因为此时 FocusLock 绑定的 onKeyDown 不起作用
+          onKeyDown={!innerFocusLock || !innerAutoFocus ? onEscExit : null}
           onMouseDown={(e) => {
             maskClickRef.current = e.target === e.currentTarget;
           }}

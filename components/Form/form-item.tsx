@@ -24,6 +24,7 @@ import {
 import { ConfigContext } from '../ConfigProvider';
 import omit from '../_util/omit';
 import FormItemLabel from './form-label';
+import { formatValidateMsg } from './utils';
 
 const Row = Grid.Row;
 const Col = Grid.Col;
@@ -42,13 +43,17 @@ const FormItemTip: React.FC<FormItemTipProps> = ({
 }) => {
   const errorTip = propsErrors.map((item, i) => {
     if (item) {
-      return <div key={i}>{item.message}</div>;
+      return (
+        <div key={i} role="alert">
+          {item.message}
+        </div>
+      );
     }
   });
   const warningTip = [];
   warnings.map((item, i) => {
     warningTip.push(
-      <div key={i} className={`${prefixCls}-message-help-warning`}>
+      <div key={i} role="alert" className={`${prefixCls}-message-help-warning`}>
         {item}
       </div>
     );
@@ -148,6 +153,11 @@ const Item = <
 
   const contextProps = {
     ...(formContext as React.Context<FormContextProps<FormData, FieldValue, FieldKey>>),
+    validateMessages:
+      formContext.validateMessages &&
+      formatValidateMsg(formContext.validateMessages, {
+        label: props.label,
+      }),
     prefixCls,
     updateFormItem,
     disabled: 'disabled' in props ? props.disabled : formContext.disabled,
