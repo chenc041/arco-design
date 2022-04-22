@@ -53,8 +53,8 @@ const TextArea = (props: TextAreaProps, ref) => {
     textAreaStyle.resize = 'none';
   }
 
-  // set element focus and  caret position
-  const setFocus = () => {
+  // set element focus and caret position
+  const onFocus = () => {
     if (textareaRef.current && textareaRef.current.focus) {
       const caretPos = textareaRef.current.textContent.length;
       // reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
@@ -105,7 +105,7 @@ const TextArea = (props: TextAreaProps, ref) => {
 
   const handleClearClick = (e) => {
     e.stopPropagation();
-    setFocus();
+    onFocus();
     handleChangeValue('', e);
     onClear && onClear();
   };
@@ -119,7 +119,7 @@ const TextArea = (props: TextAreaProps, ref) => {
     () => ({
       dom: textareaRef.current,
       focus: () => {
-        setFocus();
+        onFocus();
       },
       blur: () => {
         textareaRef.current && textareaRef.current.blur && textareaRef.current.blur();
