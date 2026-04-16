@@ -1,3 +1,11 @@
+## 2.66.14
+
+2026-04-16
+
+### 🐛 BugFix
+
+- Fixed the issue where the cursor jumps when typing Chinese in the Input component added inside Tree.Node of the `Tree` component.([#3169](https://github.com/arco-design/arco-design/pull/3169))
+
 ## 2.66.11
 
 2026-03-06

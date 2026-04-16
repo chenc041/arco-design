@@ -1,3 +1,11 @@
+## 2.66.14
+
+2026-04-16
+
+### 🐛 BugFix
+
+- Fixed the issue where when both defaultPageSize and sizeCanChange were set for `Table` pagination, the initial page size displayed in the pagination selector was the first item of sizeOptions or the default value 10 instead of defaultPageSize, causing inconsistency between the displayed page size and the actual number of entries rendered in the Table.([#3165](https://github.com/arco-design/arco-design/pull/3165))
+
 ## 2.54.1
 
 2023-10-16

@@ -1,3 +1,11 @@
+## 2.66.14
+
+2026-04-16
+
+### 🐛 问题修复
+
+- 修复`Tree` 组件的Tree.Node内添加Input组件后,在Input组件内输入中文,光标会跳动的问题([#3169](https://github.com/arco-design/arco-design/pull/3169))
+
 ## 2.66.11
 
 2026-03-06

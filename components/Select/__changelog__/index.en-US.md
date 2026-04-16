@@ -1,3 +1,11 @@
+## 2.66.14
+
+2026-04-16
+
+### 🆕 Feature
+
+- The built-in search of the `Select` component supports matching string label values, reducing user customization costs.([#3171](https://github.com/arco-design/arco-design/pull/3171))
+
 ## 2.66.13
 
 2026-04-03

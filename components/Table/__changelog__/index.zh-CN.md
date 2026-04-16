@@ -1,3 +1,11 @@
+## 2.66.14
+
+2026-04-16
+
+### 🐛 问题修复
+
+- 修复`Table` 在Table header 和Table body 分离模式下（设置Scroll y属性），调用原生横向 smooth scroll 时，滚动几乎不生效且出现轻微抖动问题([#3164](https://github.com/arco-design/arco-design/pull/3164))
+
 ## 2.66.10
 
 2026-01-23

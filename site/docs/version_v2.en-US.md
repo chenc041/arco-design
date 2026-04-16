@@ -2,6 +2,24 @@
 changelog: true
 ---
 
+## 2.66.14
+
+2026-04-16
+
+### 🆕 Feature
+
+- The built-in search of the `Select` component supports matching string label values, reducing user customization costs.([#3171](https://github.com/arco-design/arco-design/pull/3171))
+- Add configuration capability for the word count position of Input.TextArea, supporting displaying the count text of showWordLimit below the input box. This resolves issues such as overlapping count text with input content and failure to meet expected display requirements in business scenarios.([#3170](https://github.com/arco-design/arco-design/pull/3170))
+- Add a disabled parameter to the children function of the Radio component to support the requirement of displaying different content when the `Radio` is in a disabled state.([#3163](https://github.com/arco-design/arco-design/pull/3163))
+
+### 🐛 BugFix
+
+- Fixed the issue where the cursor jumps when typing Chinese in the Input component added inside Tree.Node of the `Tree` component.([#3169](https://github.com/arco-design/arco-design/pull/3169))
+- Fixed the issue where the time information was lost and displayed as 12:00:00 AM when passing a string value to `DatePicker` with format="YYYY/MM/DD hh:mm:ss A".([#3167](https://github.com/arco-design/arco-design/pull/3167))
+- Fixed the issue where when the first form item inside the Modal component is a DatePicker, the focus does not automatically move to the `DatePicker` input box after opening for the first time but falls back to the body, and the ESC key cannot close the modal.([#3166](https://github.com/arco-design/arco-design/pull/3166))
+- Fixed the issue where when both defaultPageSize and sizeCanChange were set for `Table` pagination, the initial page size displayed in the pagination selector was the first item of sizeOptions or the default value 10 instead of defaultPageSize, causing inconsistency between the displayed page size and the actual number of entries rendered in the Table.([#3165](https://github.com/arco-design/arco-design/pull/3165))
+- Fixed the issue where when using native horizontal smooth scrolling in `Table` with separated Table header and Table body mode (by setting the scroll-y property), the horizontal scrolling barely took effect and exhibited slight jitter.([#3164](https://github.com/arco-design/arco-design/pull/3164))
+
 ## 2.66.13
 
 2026-04-03

@@ -1,3 +1,12 @@
+## 2.66.14
+
+2026-04-16
+
+### 🐛 问题修复
+
+- 修复 `DatePicker` 传入字符串 value 且 format="YYYY/MM/DD hh:mm:ss A" 时显示为 12:00:00 凌晨，时间信息丢失问题([#3167](https://github.com/arco-design/arco-design/pull/3167))
+- 修复 Modal 组件内首个表单项为 `DatePicker` 时，首次打开后焦点不会自动聚焦到DatePicker元素输入框上，会回退到 body，ESC 不能关闭弹窗的问题([#3166](https://github.com/arco-design/arco-design/pull/3166))
+
 ## 2.66.13
 
 2026-04-03

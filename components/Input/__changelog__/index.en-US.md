@@ -1,3 +1,11 @@
+## 2.66.14
+
+2026-04-16
+
+### 🆕 Feature
+
+- Add configuration capability for the word count position of Input.TextArea, supporting displaying the count text of showWordLimit below the input box. This resolves issues such as overlapping count text with input content and failure to meet expected display requirements in business scenarios.([#3170](https://github.com/arco-design/arco-design/pull/3170))
+
 ## 2.66.11
 
 2026-03-06

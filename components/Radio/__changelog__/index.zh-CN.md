@@ -1,3 +1,11 @@
+## 2.66.14
+
+2026-04-16
+
+### 🆕 功能升级
+
+- `Radio` 组件children函数增加disabled参数，以支持在Radio禁用状态下展示不同内容的需求([#3163](https://github.com/arco-design/arco-design/pull/3163))
+
 ## 2.66.12
 
 2026-03-20

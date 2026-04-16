@@ -1,3 +1,11 @@
+## 2.66.14
+
+2026-04-16
+
+### 🐛 BugFix
+
+- Fixed the issue where when using native horizontal smooth scrolling in `Table` with separated Table header and Table body mode (by setting the scroll-y property), the horizontal scrolling barely took effect and exhibited slight jitter.([#3164](https://github.com/arco-design/arco-design/pull/3164))
+
 ## 2.66.10
 
 2026-01-23

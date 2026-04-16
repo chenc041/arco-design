@@ -1,3 +1,11 @@
+## 2.66.14
+
+2026-04-16
+
+### 🆕 Feature
+
+- Add a disabled parameter to the children function of the Radio component to support the requirement of displaying different content when the `Radio` is in a disabled state.([#3163](https://github.com/arco-design/arco-design/pull/3163))
+
 ## 2.66.12
 
 2026-03-20

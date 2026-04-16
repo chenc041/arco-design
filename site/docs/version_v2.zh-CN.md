@@ -2,6 +2,24 @@
 changelog: true
 ---
 
+## 2.66.14
+
+2026-04-16
+
+### 🆕 功能升级
+
+- `Select` 组件内置搜索支持匹配 字符串 label值，减少用户定制成本([#3171](https://github.com/arco-design/arco-design/pull/3171))
+- 为 Input.TextArea 新增字数统计位置配置能力，支持将 showWordLimit 的统计文案显示在输入框下方，解决业务场景下统计文案与输入内容重叠、不易满足预期展示的问题([#3170](https://github.com/arco-design/arco-design/pull/3170))
+- `Radio` 组件children函数增加disabled参数，以支持在Radio禁用状态下展示不同内容的需求([#3163](https://github.com/arco-design/arco-design/pull/3163))
+
+### 🐛 问题修复
+
+- 修复`Tree` 组件的Tree.Node内添加Input组件后,在Input组件内输入中文,光标会跳动的问题([#3169](https://github.com/arco-design/arco-design/pull/3169))
+- 修复 `DatePicker` 传入字符串 value 且 format="YYYY/MM/DD hh:mm:ss A" 时显示为 12:00:00 凌晨，时间信息丢失问题([#3167](https://github.com/arco-design/arco-design/pull/3167))
+- 修复 Modal 组件内首个表单项为 `DatePicker` 时，首次打开后焦点不会自动聚焦到DatePicker元素输入框上，会回退到 body，ESC 不能关闭弹窗的问题([#3166](https://github.com/arco-design/arco-design/pull/3166))
+- 修复`Table` 分页同时设置 defaultPageSize 与 sizeCanChange 时，分页器初始每页数量显示为 sizeOptions 首项或者默认值10而非 defaultPageSize，导致每页size数值和table实际展示的条目不一致的问题([#3165](https://github.com/arco-design/arco-design/pull/3165))
+- 修复`Table` 在Table header 和Table body 分离模式下（设置Scroll y属性），调用原生横向 smooth scroll 时，滚动几乎不生效且出现轻微抖动问题([#3164](https://github.com/arco-design/arco-design/pull/3164))
+
 ## 2.66.13
 
 2026-04-03

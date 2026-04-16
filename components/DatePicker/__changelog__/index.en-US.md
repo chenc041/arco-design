@@ -1,3 +1,12 @@
+## 2.66.14
+
+2026-04-16
+
+### 🐛 BugFix
+
+- Fixed the issue where the time information was lost and displayed as 12:00:00 AM when passing a string value to `DatePicker` with format="YYYY/MM/DD hh:mm:ss A".([#3167](https://github.com/arco-design/arco-design/pull/3167))
+- Fixed the issue where when the first form item inside the Modal component is a DatePicker, the focus does not automatically move to the `DatePicker` input box after opening for the first time but falls back to the body, and the ESC key cannot close the modal.([#3166](https://github.com/arco-design/arco-design/pull/3166))
+
 ## 2.66.13
 
 2026-04-03

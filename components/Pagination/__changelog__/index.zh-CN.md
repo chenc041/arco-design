@@ -1,3 +1,11 @@
+## 2.66.14
+
+2026-04-16
+
+### 🐛 问题修复
+
+- 修复`Table` 分页同时设置 defaultPageSize 与 sizeCanChange 时，分页器初始每页数量显示为 sizeOptions 首项或者默认值10而非 defaultPageSize，导致每页size数值和table实际展示的条目不一致的问题([#3165](https://github.com/arco-design/arco-design/pull/3165))
+
 ## 2.54.1
 
 2023-10-16
